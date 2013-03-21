@@ -52,4 +52,14 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+
+
+  #  functional
+  test "should have output on index" do
+    get :index
+    assert_response :success
+    assert_select '.list_description', minimum: 3
+    assert_select 'h1', 'Listing products'
+  end
+
 end
