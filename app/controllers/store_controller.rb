@@ -11,5 +11,6 @@ class StoreController < ApplicationController
 		@visit_counter = session[:counter] 
 		@products = Product.order(:title)
 		@time = Time.now.strftime("%I:%M:%S")
+		@cart = current_cart
 	end
 end
