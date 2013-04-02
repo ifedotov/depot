@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
-  attr_accessible :address, :email, :name, :pay_type
+  attr_accessible :address, :email, :name, :pay_type, :ship_date
 
   PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
 
