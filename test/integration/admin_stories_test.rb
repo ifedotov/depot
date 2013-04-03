@@ -3,10 +3,27 @@ require 'test_helper'
 class AdminStoriesTest < ActionDispatch::IntegrationTest
 
 	fixtures :orders
+	fixtures :users
 
 	test "updating ship date" do 
 
 		daves_order = orders(:one)
+		admin_user = users(:one)
+
+		# login
+
+		get "/login"
+	    assert_response :success
+	    assert_template "new"
+
+	    post_via_redirect "/login",
+		    { 
+		    	name: admin_user.name,
+			    password: 'secret'
+			}
+
+		assert_response :success
+	    assert_template "index"	
 
 		# go to orders page
 
